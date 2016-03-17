@@ -1,14 +1,14 @@
 {
 	"dbconf":{
 		"driver":"mysql",
-		"dbname":"",
-		"dbhost":"",
-		"dbuser":"",
+		"dbname":"mydb",
+		"dbhost":"localhost",
+		"dbuser":"root",
 		"dbpass":""
 	},
 	"app":{
-		"title":"M",
-		"version":"0.1"
+		"title":"WallaXavi.es",
+		"version":"1.0"
 	}
 
 }

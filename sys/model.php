@@ -9,12 +9,12 @@
 			$this->db=DB::singleton();
 		}
 
-		function query($query)
+		function query($sql)
 		{
-			$this->stmt=$this->db->query($query);
+			$this->stmt=$this->db->prepare($sql);
 		}
 
-		function bind($param, $value, $type)
+		function bind($param, $value)
 		{
 			switch ($value) {
 				case is_null($value):
@@ -27,7 +27,7 @@
 					$type = PDO::PARAM_STR;
 					break;
 			}
-			bindValue($param, $value, $type = null);
+			$this->stmt->bindValue($param, $value, $type = null);
 		}
 
 		function execute()
@@ -37,12 +37,14 @@
 
 		function resultSet()
 		{
-			$this->stmt->fetchAll(PDO::FETCH_ASSOC);
+			return $this->stmt->fetchAll(PDO::FETCH_ASSOC);
 		}
 
 		function single()
 		{
-			$this->stmt->fetch(PDO::FETCH_ASSOC);
+
+			return $this->stmt->fetchAll(PDO::FETCH_ASSOC);
+
 		}
 
 		function rowCount()

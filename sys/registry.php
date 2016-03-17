@@ -1,14 +1,4 @@
 <?php
-
-	/**
-	 * 
-	 * 
-	 * Registry: stores navigation information
-	 * 
-	 * @author Toni
-	 * 
-	 * 
-	 * */
 	 
 	 class Registry{
 	 	 private $data=array();

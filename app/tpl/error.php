@@ -1,7 +1,8 @@
 
-	<div class="container">
+	<div class="error">
 		<article>
-			<h2>Error M-framework</h2>
-			<p>Hello world, are you wrong?</p>
+			<p>Se ha producido un error</p>
 		</article>
+
+		
 	</div>
