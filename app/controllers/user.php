@@ -11,4 +11,9 @@
 			
 			
 		}
+
+		function anuncios()
+		{
+			$anuncios=$this->model->anuncios();
+		}
 	}

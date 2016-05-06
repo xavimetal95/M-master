@@ -206,11 +206,10 @@ header form
 }
 .admin_users
 {
-	width: 20%;
-	height: 350px;
-	border: solid 3px #8fed8f;
+	width: 40%;
+	height: 500px;
 	float: left;
-	margin-left: 15%;
+	margin-left: 5%;
 	margin-top: 3%;
 	display: flex;
 	flex-direction: column;
@@ -240,14 +239,33 @@ footer
     bottom:5px;
 }
 
+.modificar_user
+{
+	margin-top: 5%;
+}
 .modificar_user h1
 {
 	text-align: center;
+	margin-bottom: 2%;
 }
-
+.eliminar_user
+{
+	margin-top: 5%;
+}
 .eliminar_user h1
 {
 	text-align: center;
+	margin-bottom: 2%;
+}
+.crear_user
+{
+	margin-top: 5%;
+}
+
+.crear_user h1
+{
+	text-align: center;
+	margin-bottom: 2%;
 }
 
 .anuncios
@@ -317,7 +335,92 @@ footer
 	margin-left: 115%;
 }
 
-#boton_
+#submit_modificar
 {
 	margin-left: 120%;
-} 
+}
+
+#submit_eliminar
+{
+	margin-left: 120%;
+}
+
+#submit_crear
+{
+	margin-left: 120%;
+}
+
+#boton_modificar
+{
+	margin-top: 5%;
+}
+
+#boton_eliminar
+{
+	margin-top: 5%;
+}
+
+#boton_crear
+{
+	margin-top: 5%;
+}
+
+#anuncios_vistauser
+{
+	margin:5%;
+	display: flex;
+	flex-wrap: wrap;
+	height: 40vh;
+
+}
+
+.anuncio_user
+{
+	border: solid 1px #8fed8f;
+	flex:1;
+}
+
+.anuncio_user h2, p
+{
+	text-align: center;
+	margin-top: 3%;
+}
+
+#mapa
+{
+	margin-left: 30%;
+}
+
+.anuncios_home
+{
+	margin:5%;
+	display: flex;
+	flex-direction: row;
+	height: 40vh;
+	margin-top: 10%;
+
+}
+.anuncio_home
+{
+	border: solid 1px #8fed8f;
+	flex:1;
+	margin-left: 2%;
+}
+
+.anuncio_home h2, p
+{
+	text-align: center;
+	margin-top: 3%;
+}
+
+#logeado
+{
+	width: 20%;
+	margin-left: 80%;
+	margin-top: -5%;
+}
+
+#logeado img
+{
+	width: 20%;
+}
