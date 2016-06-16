@@ -7,7 +7,7 @@
 			
 		}
 
-		
+		//Comprueba de entre todos los usuarios si el que tiene el email y password que introducen existe y, si es así, crea varias Session
 		function login($email,$password){
    	 try{
       
@@ -23,6 +23,7 @@
              $array_bd = $this->single();
              Session::set('rol_usr', $array_bd[0]['rol']);
              Session::set('nombre_usr', $array_bd[1]['nombre']);
+             Session::set('id_usr', $array_bd[2]['id_user']);
              Session::set('islogged',TRUE);
              return TRUE;
        }
@@ -33,6 +34,12 @@
       }catch(PDOException $e){
          echo "Error:".$e->getMessage();
      }
+    }
+
+    //Pone a false la Session islogged
+    function logout()
+    {
+      Session::set('islogged',FALSE);
     }
 
 

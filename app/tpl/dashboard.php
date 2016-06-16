@@ -62,6 +62,7 @@
 
 		<div class="admin_anuncios">
 			<h1>Gestionar anuncios</h1>
+			<div id="anuncios"></div>
 			<input type="button" value="Modificar anuncio" class="boton" id="boton_modificar_anuncio"></input>
 		
 				<div class="modificar_anuncio" id="modificar_anuncio">

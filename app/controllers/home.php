@@ -14,6 +14,8 @@
 		function home(){
 
 		}
+
+		//Validacion de usuario y redireccion segun si es administrador o usuario normal
 		
 		function login(){
 		
@@ -25,31 +27,10 @@
 		       
 
 		         if ($user == TRUE){
-             		Session::set('email',$email);
+             		Session::set('id_user',$id);
              		Session::set('pass',$password);
              		Session::set('rol',$rol);
-             		$_SESSION['nombre_usr'] = $nombre['nombre'];
 
-             		if ($_SESSION['islogged'] == TRUE) 
-             		{
-             			echo '<div id="session_on"><br> Hola '.$nombre.' | <a href="javascript:void(0);" id="sessionKiller">Logout</a>.</div>';
-             		}else
-             		{
-             			echo '<form class="login" method="post" action="M-master/home/login" >
-							<label>Email</label><input type="text" name="email" id="login_username">
-							<br>
-							<label>Password</label><input type="password" name="password" id="login_userpass">
-							<br>
-							<div class="botones">
-								<input type="submit" value="Login" class="boton" id="login_userbttn">
-							</div>
-						</form>
-						
-						<form class="regis" method="post">
-							<a class="boton" href="M-master/register">Registrate</a>
-						</form>';
-             		}
-             		
 		               // cap a la pàgina principal
              		if($_SESSION['rol_usr'] != "admin")
              		{
@@ -63,14 +44,34 @@
 		         }
 		         else{
 		             
-		               header('Location:'.APP_W.'error');
+		               echo '<script>alert("se ha producido un error!");</script>';
 		             }
 		   		}
 		   		else
 		   		{
-		   			header('Location:'.APP_W.'error');
+		   			echo '<script>alert("se ha producido un error!");</script>';
 		   		}
 			}
 
+			//Funcion que cambia la session a false
+			function logout()
+			{
+				$user=$this->model->logout();
+				header('Location:'.APP_W);
+			}
+
+			//Redirecciona a dashboard o user (depende del rol) al clicar en el icono del usuario
+
+			function user_icon()
+			{
+				if($_SESSION['rol_usr'] != "admin")
+             	{
+             		header('Location:'.APP_W.'user');
+             	}
+             	else
+             	{
+             		header('Location:'.APP_W.'dashboard');
+             	}
+			}
 		
 }

@@ -12,8 +12,17 @@
 			
 		}
 
+		//Se muestran los usuarios del usuario concreto
+
 		function anuncios()
 		{
 			$anuncios=$this->model->anuncios();
+		    if($anuncios!=0)
+		    {
+		      $this->json($anuncios);
+		    }else
+		    {
+		      return $anuncios;
+    		}
 		}
 	}

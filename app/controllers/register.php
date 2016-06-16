@@ -14,6 +14,7 @@
 
 		}
 
+		//Registra un nuevo usuario
 		function register()
 		{
 

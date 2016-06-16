@@ -7,20 +7,27 @@
 			
 		}
 
-		function anuncios()
+
+		//Muestra todos los anuncios del usuario
+		function lista_anuncios()
 		{
-			try
-		 	{
-		      	$sql="SELECT * FROM anuncios";
-		       	$this->query($sql);
-		       	$this->execute();
-		       	$result=$this->fetchAll();
+		try
+		{
+			$id = $_SESSION['id_usr'];
+			$sql="SELECT * FROM anuncio where Usuarios_id_user1=:id";
+		    $this->query($sql); 
+		    $this->bind(':id',$id);
+		    $this->execute();
+		    $result=$this->resultSet();
+		    if(($this->rowCount())==0)
+		    {
+	          $result=0;
+	        }
+			return $result;
 
-		       	return json_encode($result);
-
-      		}catch(PDOException $e)
-      		{
-       			echo "Error:".$e->getMessage();
-      		}
-		}
+		}catch(PDOException $e)
+      	{
+        	echo "Error:".$e->getMessage();
+      	}
+	}
 	}

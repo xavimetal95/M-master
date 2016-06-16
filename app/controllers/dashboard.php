@@ -11,12 +11,14 @@
 				
 		}
 
+		//Muestra todos los usuarios
 		function lista_users()
 		{
 			$listar_users=$this->model->lista_users();
 			$this->json_out($listar_users);
 		}
 
+		//Crea un usuario
 		function crear_user()
 		{
 			if(!empty($_POST['email']) && !empty($_POST['password'])&& !empty($_POST['nombre'])&& !empty($_POST['rol'])){
@@ -26,23 +28,13 @@
 		        $name=filter_input(INPUT_POST, 'nombre', FILTER_SANITIZE_STRING);
 		        $rol=filter_input(INPUT_POST, 'rol', FILTER_SANITIZE_STRING);
 		        $new_user2=$this->model->crear_user($email,$password,$name,$rol);
-
-		         if ($new_user2 == TRUE){ 
-		               
-		            header('Location:'.APP_W.'dashboard');
-		         }
-		         else{
-		             
-		                echo '<script>alert("se ha producido un error!");</script>';
-		                header('Location:'.APP_W.'dashboard');
-		             }
+ 
 		   		}else{
-		             
 		               echo '<script>alert("se ha producido un error!");</script>';
-		               header('Location:'.APP_W.'dashboard');
 		             }
 		}
 
+		//Elimina el usuario indicado
 		function eliminar_user()
 		{
 			if(!empty($_POST['email'])){
@@ -52,20 +44,13 @@
 		   	}else{
 		             
 		                echo '<script>alert("se ha producido un error!");</script>';
-		               header('Location:'.APP_W.'dashboard');
+		               
 		             }
 
-		   		if ($delete_user == TRUE){ 
-		               
-		            header('Location:'.APP_W.'dashboard');
-		         }
-		         else{
-		             
-		                 echo '<script>alert("se ha producido un error!");</script>';
-		                header('Location:'.APP_W.'dashboard');
-		             }
 		 
 		}
+
+		//Modifica el email, password o nombre del usuario indicado
 
 		function modificar_user()
 		{
@@ -76,23 +61,27 @@
 		        $name=filter_input(INPUT_POST, 'nombre', FILTER_SANITIZE_STRING);
 		        $modificar=filter_input(INPUT_POST, 'modificar', FILTER_SANITIZE_STRING);
 		        $modi_user=$this->model->modificar_user($email,$password,$name,$modificar);
-
-		         if ($modi_user == TRUE){ 
-		               
-		            header('Location:'.APP_W.'dashboard');
-
-		         } else{
-		             
-		               header('Location:'.APP_W.'dashboard');
-		                echo '<script>alert("se ha producido un error!");</script>';
-		             }
 		        
 		   		} else{
-		             
-		               header('Location:'.APP_W.'dashboard');
 		               echo '<script>alert("se ha producido un error!");</script>';
 		             }
 		}
+
+		//Lista todos los anuncios
+		function lista_anuncios()
+		{
+			$listar_anuncios=$this->model->lista_anuncios();
+			if($listar_anuncios>0)
+			{
+				$this->json_out($listar_anuncios);
+			}else
+			{
+				return $listar_anuncios;
+			}
+			
+		}
+
+		//Creación de anuncio
 
 		function crear_anuncio()
 		{
@@ -103,21 +92,13 @@
 		        $imagen=filter_input(INPUT_POST, 'imagen', FILTER_SANITIZE_STRING);
 		        $new_anuncio=$this->model->crear_anuncio($titulo,$descripcion,$imagen);
 
-		         if ($new_anuncio == TRUE){ 
-		               
-		            header('Location:'.APP_W.'dashboard');
-		         }
-		         else{
-		             
-		                echo '<script>alert("se ha producido un error!");</script>';
-		                header('Location:'.APP_W.'dashboard');
-		             }
 		   		}else{
 		             
 		               echo '<script>alert("se ha producido un error!");</script>';
-		               header('Location:'.APP_W.'dashboard');
 		             }
 		}
+
+		//Elimina un anuncio concreto
 
 		function eliminar_anuncio()
 		{
@@ -128,20 +109,11 @@
 		   	}else{
 		             
 		                echo '<script>alert("se ha producido un error!");</script>';
-		               header('Location:'.APP_W.'dashboard');
-		             }
-
-		   		if ($delete_anuncio == TRUE){ 
-		               
-		            header('Location:'.APP_W.'dashboard');
-		         }
-		         else{
-		             
-		                 echo '<script>alert("se ha producido un error!");</script>';
-		                header('Location:'.APP_W.'dashboard');
-		             }
-		 
+		          
+		             } 
 		}
+
+		//Modifica el anuncio indicado
 
 		function modificar_anuncio()
 		{
@@ -153,19 +125,9 @@
 		        $modificar=filter_input(INPUT_POST, 'modificar', FILTER_SANITIZE_STRING);
 		        $modi_anuncio=$this->model->modificar_anuncio($titulo,$descripcion,$imagen,$modificar);
 
-		         if ($modi_anuncio == TRUE){ 
-		               
-		            header('Location:'.APP_W.'dashboard');
-
-		         } else{
-		             
-		               header('Location:'.APP_W.'dashboard');
-		                echo '<script>alert("se ha producido un error!");</script>';
-		             }
 		        
 		   		} else{
 		             
-		               header('Location:'.APP_W.'dashboard');
 		               echo '<script>alert("se ha producido un error!");</script>';
 		             }
 		}

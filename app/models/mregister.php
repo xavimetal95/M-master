@@ -7,6 +7,7 @@
 			
 		}
 		
+		//Comprueba que el usuario no exista y, si es así, lo inserta
 		function register($email, $password, $name)
 		{
 		 	try

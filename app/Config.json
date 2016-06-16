@@ -1,7 +1,7 @@
 {
 	"dbconf":{
 		"driver":"mysql",
-		"dbname":"mydb",
+		"dbname":"frame",
 		"dbhost":"localhost",
 		"dbuser":"root",
 		"dbpass":""

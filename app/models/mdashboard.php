@@ -6,22 +6,26 @@
 			parent::__construct();
 			
 		}
+
+		//Muestra todos los usuarios
 		
 		function lista_users()
 		{
 			try
 			{
-			    $sql="SELECT email, nombre, pass, rol FROM usuarios";
+			    $sql="SELECT * FROM usuarios";
 			    $this->query($sql);
 			    $this->execute();
 			    $result=$this->resultSet();
 			    return $result;
+			    
       		}catch(PDOException $e){
         		 echo "Error:".$e->getMessage();
      		}
 			
 		}
 
+		//Elimina el usuario si existe
 		function eliminar_user($email)
 		{
 		 	try
@@ -49,6 +53,7 @@
       }	
 	}
 
+		//Modifica el usuario concreto si no hay error
 
 		function modificar_user($email,$password,$name,$modificar)
 		{
@@ -90,6 +95,8 @@
       }
 	}
 
+	//Crea un usuario
+
 	function crear_user($email, $password, $name, $rol)
 		{
 		 	try
@@ -121,35 +128,52 @@
       }
 		}
 
-	function crear_anuncio($titulo, $descripcion, $imagen)
+		//Muestra todos los anuncios de un usuario concreto
+
+	function lista_anuncios()
+	{
+		try
 		{
-		 	try
-		 	{
-		      	$sql="SELECT * FROM anuncio WHERE titulo=:titulo AND descripcion=:descripcion";
-		       	$this->query($sql);
-		       	$this->bind(':titulo',$titulo);
-		       	$this->bind(':descripcion',$descripcion);
-		       	$this->execute();
-      
-	       if($this->rowCount()==0)
-	       {
-	       	 	$sql="INSERT into anuncio values(:titulo, :descripcion, :imagen";
-			    $this->query($sql);
-			    $this->bind(':titulo',$titulo);
-			    $this->bind(':descripcion',$descripcion);
-			    $this->bind(':imagen',$imagen);
-			    $this->execute();
-	            return TRUE;
-	       }
-	       else
-	       {
-	          return FALSE;
-	       } 
-      }catch(PDOException $e)
-      {
-        echo "Error:".$e->getMessage();
-      }
+			$id = $_SESSION['id_usr'];
+			$sql="SELECT * FROM anuncio where Usuarios_id_user1=:id";
+		    $this->query($sql); 
+		    $this->bind(':id',$id);
+		    $this->execute();
+		    $result=$this->resultSet();
+		    if(($this->rowCount())==0)
+		    {
+	          $result=0;
+	        }
+			return $result;
+
+		}catch(PDOException $e)
+      	{
+        	echo "Error:".$e->getMessage();
+      	}
+	}
+
+	//Crea un anuncio
+	function crear_anuncio($titulo, $descripcion, $imagen)
+	{
+		try
+		{
+		 	$id = $_SESSION['id_usr'];
+	       	$sql="INSERT into anuncio(titulo,descripcion,imagen,Usuarios_iduser1) values(:titulo, :descripcion, :imagen, :id_user";
+			$this->query($sql);
+			$this->bind(':titulo',$titulo);
+			$this->bind(':descripcion',$descripcion);
+			$this->bind(':imagen',$imagen);
+			$this->bind(':id_user',$id);
+			$this->execute();
+	        return TRUE;
+	       
+		}catch(PDOException $e)
+		{
+		    echo "Error:".$e->getMessage();
 		}
+	}
+
+	//Elimina un anuncio concreto
 
 	function eliminar_anuncio($id)
 		{
@@ -177,6 +201,8 @@
         echo "Error:".$e->getMessage();
       }	
 	}
+
+	//Modifica un anuncio concreto
 
 	function modificar_anuncio($titulo,$descripcion,$imagen,$modificar)
 		{
