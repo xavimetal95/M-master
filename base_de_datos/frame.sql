@@ -1,4 +1,4 @@
--- phpMyAdmin SQL Dump
+﻿-- phpMyAdmin SQL Dump
 -- version 4.4.14
 -- http://www.phpmyadmin.net
 --
@@ -24,11 +24,11 @@ DELIMITER $$
 --
 -- Procedimientos
 --
-CREATE DEFINER=`root`@`localhost` PROCEDURE `create_user`(IN `name` VARCHAR(50) CHARSET utf8, IN `email` VARCHAR(50) CHARSET utf8, IN `pass` VARCHAR(50) CHARSET utf8, IN `rol` VARCHAR(50) CHARSET utf8)
+CREATE DEFINER=`jfernandez_frame`@`localhost` PROCEDURE `create_user`(IN `name` VARCHAR(50) CHARSET utf8, IN `email` VARCHAR(50) CHARSET utf8, IN `pass` VARCHAR(50) CHARSET utf8, IN `rol` VARCHAR(50) CHARSET utf8)
     NO SQL
 INSERT INTO `usuarios`(`email`, `nombre`, `pass`, `rol`) VALUES (email,name,pass,rol)$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `insert_user`(IN `name` VARCHAR(50) CHARSET utf8, IN `email` VARCHAR(50) CHARSET utf8, IN `pass` VARCHAR(50) CHARSET utf8)
+CREATE DEFINER=`jfernandez_frame`@`localhost` PROCEDURE `insert_user`(IN `name` VARCHAR(50) CHARSET utf8, IN `email` VARCHAR(50) CHARSET utf8, IN `pass` VARCHAR(50) CHARSET utf8)
     NO SQL
 INSERT INTO `usuarios`(`email`, `nombre`, `pass`) VALUES (email,name,pass)$$
 
